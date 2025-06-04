@@ -4,7 +4,9 @@ import TaskColumn from './components/TaskColumn/TaskColumn.jsx';
 import TodoIcon from './assets/direct-hit.png';
 import DoingIcon from './assets/glowing-star.png';
 import DoneIcon from './assets/check-mark-button.png';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+const oldTasks = localStorage.getItem('tasks');
 
 const App = () => {
   var tabs = [
@@ -25,7 +27,10 @@ const App = () => {
     }
   ];
   // hook
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(JSON.parse(oldTasks) || []);
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]);
   // functions
   const handleDeleteTask = (taskIndex) => {
     var newTask = tasks.filter((task, index) => index !== taskIndex);
