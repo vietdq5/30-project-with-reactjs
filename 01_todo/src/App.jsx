@@ -1,34 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import TaskForm from './components/TaskForm.jsx'
+import TaskColumn from './components/TaskColumn/TaskColumn.jsx';
+import TodoIcon from './assets/direct-hit.png';
+import DoingIcon from './assets/glowing-star.png';
+import DoneIcon from './assets/check-mark-button.png';
+import { useState } from 'react';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
+  var tabs = [
+    {
+      title: "To do",
+      status_key: "todo",
+      icon: TodoIcon
+    },
+    {
+      title: "Doing",
+      status_key: "doing",
+      icon: DoingIcon
+    },
+    {
+      title: "Done",
+      status_key: "done",
+      icon: DoneIcon
+    }
+  ];
+  // hook
+  const [tasks, setTasks] = useState([]);
+  // functions
+  const handleDeleteTask = (taskIndex) => {
+    var newTask = tasks.filter((task, index) => index !== taskIndex);
+    setTasks(newTask);
+  };
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="app">
+      <TaskForm setTasks={setTasks}></TaskForm>
+      <main className='app_main'>
+        {
+          tabs.map((tab, index) => (
+            <TaskColumn key={index} title={tab.title} icon={tab.icon} tasks={tasks} status={tab.status_key} handleDelete={handleDeleteTask}></TaskColumn>
+          ))
+        }
+      </main>
+    </div>
   )
 }
 
