@@ -31,10 +31,22 @@ const App = () => {
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }, [tasks]);
+  const [activeCard, setActiveCard] = useState(null);
   // functions
   const handleDeleteTask = (taskIndex) => {
     var newTask = tasks.filter((task, index) => index !== taskIndex);
     setTasks(newTask);
+  };
+  const onDrop = (status, index) => {
+    console.log("onDrag:", status, index);
+    if (activeCard == null || activeCard === undefined) return;
+    const taskMove = tasks[activeCard];
+    const updatedTask = tasks.filter((task, index) => index !== activeCard);
+    updatedTask.splice(index, 0, {
+      ...taskMove,
+      status: status
+    });
+    setTasks(updatedTask);
   };
   return (
     <div className="app">
@@ -42,7 +54,14 @@ const App = () => {
       <main className='app_main'>
         {
           tabs.map((tab, index) => (
-            <TaskColumn key={index} title={tab.title} icon={tab.icon} tasks={tasks} status={tab.status_key} handleDelete={handleDeleteTask}></TaskColumn>
+            <TaskColumn
+              key={index}
+              title={tab.title}
+              icon={tab.icon} tasks={tasks}
+              status={tab.status_key}
+              handleDelete={handleDeleteTask}
+              setActiveCard={setActiveCard}
+              onDrop={onDrop} />
           ))
         }
       </main>
