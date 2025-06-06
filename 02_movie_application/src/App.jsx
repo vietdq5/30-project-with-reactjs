@@ -1,8 +1,11 @@
+import MovieList from "./components/MovieList/MovieList";
+import Navbar from "./components/Navbar/Navbar";
+
 const App = () => {
   return (
     <div className="app">
-      <nav className="navbar">Nav bar content</nav>
-      <main>Main Content</main>
+      <Navbar />
+      <MovieList />
     </div>
   )
 }
