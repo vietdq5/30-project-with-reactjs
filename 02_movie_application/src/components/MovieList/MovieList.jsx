@@ -1,11 +1,11 @@
-import Fire from '../../assets/fire.png';
+
 import './MovieList.css';
 import MovieCard from './MovieCard.jsx';
 import { useState, useEffect } from 'react';
 import FilterGroup from './FilterGroup.jsx';
 import _ from 'lodash';
 
-const MovieList = () => {
+const MovieList = ({type, title, emoji}) => {
 
     const [movies, setMovies] = useState([]);
     const [moviesFilter, setMoviesFilter] = useState([]);
@@ -53,15 +53,15 @@ const MovieList = () => {
     }
 
     return (
-        <section className="movie_list">
+        <section className="movie_list" id={type}>
             <header className="align_center movie_list_header">
                 <h2 className='align_center movie_list_heading'>
-                    Popular Movies
-                    <img src={Fire} alt="Popular Movies" className='navbar_emoji' />
+                    {title}
+                    <img src={emoji} alt="Popular Movies" className='navbar_emoji' />
                 </h2>
                 <div className="align_center movie_list_fs">
                     <FilterGroup minRate={minRate} handleFilter={handleFilter} rates={[6, 7, 8]} />
-                    <select name="by" id="sort" className="movie_sorting" onChange={handleSort} value={sort.by}>
+                    <select name="by" id="" className="movie_sorting" onChange={handleSort} value={sort.by}>
                         <option value="default">Sort By</option>
                         <option value="release_date">Date</option>
                         <option value="vote_average">Rating</option>
