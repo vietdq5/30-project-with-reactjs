@@ -1,3 +1,4 @@
+import { Routes, Route } from "react-router-dom";
 import MovieList from "./components/MovieList/MovieList";
 import Navbar from "./components/Navbar/Navbar";
 import Fire from './assets/fire.png';
@@ -8,9 +9,11 @@ const App = () => {
   return (
     <div className="app">
       <Navbar />
-      <MovieList type="popular" title="Popular" emoji={Fire} />
-      <MovieList type="top_rate" title="Top Rate" emoji={Star} />
-      <MovieList type="upcomming" title="Up comming" emoji={Party} />
+      <Routes>
+        <Route path="/" element={<MovieList type="popular" title="Popular" emoji={Fire} />} />
+        <Route path="/top_rate" element={<MovieList type="top_rate" title="Top Rate" emoji={Star} />} />
+        <Route path="/upcomming" element={<MovieList type="upcomming" title="Up comming" emoji={Party} />} />
+      </Routes>
     </div>
   )
 }
