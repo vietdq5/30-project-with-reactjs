@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import FilterGroup from './FilterGroup.jsx';
 import _ from 'lodash';
 
-const MovieList = ({type, title, emoji}) => {
+const MovieList = ({ type, title, emoji }) => {
 
     const [movies, setMovies] = useState([]);
     const [moviesFilter, setMoviesFilter] = useState([]);
@@ -27,9 +27,12 @@ const MovieList = ({type, title, emoji}) => {
     }, [sort]);
 
     const fetchMovies = async () => {
-        const reponse = await fetch("https://api.themoviedb.org/3/movie/popular?api_key=b908a76e7077f423fe72890b04a5b486")
-            .catch(error => console.error('Error fetching movie data:', error));
-        const data = await reponse.json();
+         const response = await fetch(
+            `https://api.themoviedb.org/3/movie/${type}?api_key=b908a76e7077f423fe72890b04a5b486`
+        );
+        // const reponse = await fetch(`https://api.themoviedb.org/3/movie/${type}?api_key=b908a76e7077f423fe72890b04a5b486`)
+        //     .catch(error => console.error('Error fetching movie data:', error));
+        const data = await response.json();
         setMovies(data.results);
         setMoviesFilter(data.results);
     }

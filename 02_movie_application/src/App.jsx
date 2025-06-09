@@ -11,8 +11,8 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<MovieList type="popular" title="Popular" emoji={Fire} />} />
-        <Route path="/top_rate" element={<MovieList type="top_rate" title="Top Rate" emoji={Star} />} />
-        <Route path="/upcomming" element={<MovieList type="upcomming" title="Up comming" emoji={Party} />} />
+        <Route path="/top_rated" element={<MovieList type="top_rated" title="Top Rate" emoji={Star} />} />
+        <Route path="/upcoming" element={<MovieList type="upcoming" title="Up comming" emoji={Party} />} />
       </Routes>
     </div>
   )

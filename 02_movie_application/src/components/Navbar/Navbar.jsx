@@ -12,8 +12,8 @@ const Navbar = () => {
             <div className="navbar_links">
                 <DarkMode />
                 <NavLink to="/">Popular <img src={Fire} alt="Popular movie" className='navbar_emoji' /></NavLink>
-                <NavLink to="/top_rate">Top Rated <img src={Star} alt="Rop rated movie" className='navbar_emoji' /></NavLink>
-                <NavLink to="/upcomming">Upcomming <img src={Party} alt="Upcomming movie" className='navbar_emoji' /></NavLink>
+                <NavLink to="/top_rated">Top Rated <img src={Star} alt="Rop rated movie" className='navbar_emoji' /></NavLink>
+                <NavLink to="/upcoming">Upcomming <img src={Party} alt="Upcomming movie" className='navbar_emoji' /></NavLink>
             </div>
         </nav>
     )
