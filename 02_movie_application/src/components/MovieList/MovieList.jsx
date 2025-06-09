@@ -27,7 +27,7 @@ const MovieList = ({ type, title, emoji }) => {
     }, [sort]);
 
     const fetchMovies = async () => {
-         const response = await fetch(
+        const response = await fetch(
             `https://api.themoviedb.org/3/movie/${type}?api_key=b908a76e7077f423fe72890b04a5b486`
         );
         // const reponse = await fetch(`https://api.themoviedb.org/3/movie/${type}?api_key=b908a76e7077f423fe72890b04a5b486`)

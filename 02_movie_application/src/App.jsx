@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Fire from './assets/fire.png';
 import Star from './assets/glowing-star.png';
 import Party from './assets/partying-face.png';
+import MovieDetail from "./components/MovieList/MovieDetail";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route path="/" element={<MovieList type="popular" title="Popular" emoji={Fire} />} />
         <Route path="/top_rated" element={<MovieList type="top_rated" title="Top Rate" emoji={Star} />} />
         <Route path="/upcoming" element={<MovieList type="upcoming" title="Up comming" emoji={Party} />} />
+        <Route path="/movie/detail/:movieId" element={<MovieDetail />} />
       </Routes>
     </div>
   )
