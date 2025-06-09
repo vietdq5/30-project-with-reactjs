@@ -1,0 +1,21 @@
+.narbar_list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+.narbar_list li {
+    margin: 10px;
+}
+
+.nav_link {
+    margin: 5px 10px;
+    text-decoration: none;
+}
+
+.nav_link.active {
+    font-weight: 500;
+    color: blue;
+
+}
